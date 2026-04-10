@@ -7,49 +7,74 @@
   </head>
   <body>
     <style>
+      body {
+        margin: 0;
+        font-family: "Segoe UI, Tahoma, Geneva, Verdana, sans-serif";
+        background-color: #f4f6f9;
+      }
+      /* Header */
       .main-header {
         background: linear-gradient(to right, #1b263b, #415a77);
         color: white;
+      }
+      .top-header {
         text-align: center;
-        padding: 20px;
+        padding: 20px 10px 10px;
       }
-      .main-header h1 {
+      .top-header h1 {
         margin: 0;
-        font-size: 28px;
+        font-size: 30px;
+        letter-spacing: 1px;
       }
-      .main-header p {
-        margin: 5px 0 0;
-        font-size: 14px;
+      .top-header p {
+        margin-top: 5px;
+        font-size: 30px;
         opacity: 0.8;
       }
+      /* Navbar */
       .navbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color: #1f1f1f;
-        padding: 12px;
-        font-family: Arial, Helvetica, sans-serif;
+        background-color: #0d1b2a;
+        padding: 12px 25px;
+        margin: 15px auto;
+        width: 95%;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       }
       .logo {
-        color: #fff;
-        font-size: 24px;
+        color: #ffffff;
+        font-size: 20px;
         font-weight: bold;
       }
       .nav-links {
         list-style: none;
         display: flex;
-        gap: 20px;
+        gap: 22px;
         margin: 0px;
         padding: 0px;
       }
-      .nav-links li a {
+      .nav-links a {
         text-decoration: none;
-        color: #fff;
-        font-size: 16px;
-        transition: color 0.3s;
+        color: #e0e6ed;
+        font-size: 15px;
+        position: relative;
+        transition: 0.3s;
       }
-      .nav-links li a:hover {
-        color: #ff6f61;
+      /*Underline the hover animation*/
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        background: #00b4d8;
+        left: 0;
+        bottom: -5px;
+        transition: 0.3;
+      }
+      .nav-links a:hover {
+        color: #00b4d8;
       }
     </style>
     <header class="main-header">
@@ -57,9 +82,11 @@
         <h1>NextPlay (NXP)</h1>
         <p>Your all-in-one sports analytics dashboard</p>
       </div>
+
       <nav class="navbar">
         <div class="logo">NXP</div>
-        <ul class="nav-links" id="navLinks">
+
+        <ul class="nav-links">
           <li><a href="dashboard.html">Dashboard</a></li>
           <li><a href="player_insights.html">Player Insights</a></li>
           <li><a href="matchup.html">Matchups</a></li>
@@ -69,9 +96,10 @@
           <li><a href="account.html">My Account</a></li>
           <li><a href="help.html">Help</a></li>
         </ul>
+
         <div class="right-section">
           <input type="text" placeholder="Search..." class="search-bar" />
-          <div class="menu-toggle" id="menuToggle">☰</div>
+          <span class="menu-toggle" id="menuToggle">☰</span>
         </div>
       </nav>
     </header>
