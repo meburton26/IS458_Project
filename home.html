@@ -74,6 +74,11 @@
         transform: scale(1.05);
       }
 
+      .menu-checkbox,
+      .hamburger {
+        display: none;
+      }
+
       /* Lists */
       .nav-group a {
         color: white;
@@ -152,12 +157,20 @@
     </style>
     <header class="main-header">
       <nav class="navbar">
-        <ul class="nav-group left">
-          <li><a href="dashboard.html">Dashboard</a></li>
-          <li><a href="player_insights.html">Player Insights</a></li>
-          <li><a href="matchup.html">Matchups</a></li>
-          <li><a href="trends.html">Trends</a></li>
-        </ul>
+        <input type="checkbox" id="menu-toggle" class="menu-checkbox" />
+        <label for="menu-toggle" class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <div class="nav-group left">
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="player_insights.html">Player Insights</a></li>
+            <li><a href="matchup.html">Matchups</a></li>
+            <li><a href="trends.html">Trends</a></li>
+          </ul>
+        </div>
 
         <div class="logo-container">
           <img src="/images/NXP.png" alt="NextPlay Logo" class="center-logo" />
