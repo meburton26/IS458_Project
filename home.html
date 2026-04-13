@@ -4,172 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NextPlay (NXP) | Elite Analytics</title>
+    <link rel="stylesheet" href="home.css" />
   </head>
   <body>
-    <style>
-      :root {
-        /*Computer Science classes and notes*/
-        --primary: #ff2c2c;
-        --accent: #802018;
-        --bg: #050505;
-        --card-bg: rgba(255, 255, 255, 0.05);
-      }
-      * {
-        margin: 0px;
-        padding: 0px;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: "Arial", sans-serif;
-        background-color: white;
-      }
-      /* Navbar */
-      .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #802018;
-        padding: 0px 40px;
-        height: 100px;
-      }
-
-      .nav-group {
-        flex: 1;
-        display: flex;
-        align-items: center;
-      }
-
-      .nav-group.left {
-        align-items: flex-start;
-      }
-
-      .nav-group.right {
-        justify-content: flex-end;
-        gap: 15px;
-      }
-
-      .navbar ul {
-        display: flex;
-        list-style: none;
-        list-style-type: none;
-        gap: 25px;
-        margin: 0;
-        padding: 0;
-      }
-
-      .navbar li {
-        list-style: none;
-      }
-
-      /* Logo */
-      .logo-container {
-        display: flex;
-        justify-content: center;
-        width: 200px;
-        align-items: center;
-        margin-bottom: 15px;
-      }
-
-      .center-logo {
-        height: 100px;
-        width: auto;
-        transition: transform 0.3s ease;
-      }
-
-      .center-logo:hover {
-        transform: scale(1.05);
-      }
-
-      .menu-checkbox,
-      .hamburger {
-        display: none;
-      }
-
-      /* Lists */
-      .nav-group a {
-        color: white;
-        text-decoration: none;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 15px;
-        font-weight: 500;
-        white-space: nowrap;
-      }
-
-      .nav-group a:hover {
-        text-decoration: underline;
-      }
-
-      .search-bar {
-        padding: 6px 10px;
-        border-radius: 4px;
-        border: none;
-        width: 150px;
-        outline: none;
-      }
-      /*Hero and Cards*/
-      .hero {
-        text-align: center;
-        padding: 50px 20px;
-      }
-      .hero h2 {
-        font-size: 36px;
-        margin-bottom: 15px;
-        color: #1b263b;
-      }
-
-      .hero p {
-        font-size: 18px;
-        color: #666;
-        margin-bottom: 40px;
-      }
-
-      .cards {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 20px;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .card {
-        background: white;
-        padding: 30px 20px;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-        width: 260px;
-        transition: 0.3s;
-        border-top: 4px solid #802018;
-      }
-
-      .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-      }
-
-      .card h3 {
-        margin-bottom: 10px;
-        font-size: 20px;
-      }
-
-      footer {
-        text-align: center;
-        padding: 30px;
-        background: #0d1b2a;
-        color: white;
-        margin-top: 30px;
-        font-size: 14px;
-      }
-    </style>
-    <header class="main-header">
-      <nav class="navbar">
-        <input type="checkbox" id="menu-toggle" class="menu-checkbox" />
-        <label for="menu-toggle" class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </label>
+    <header>
         <div class="nav-group left">
           <ul>
             <li><a href="dashboard.html">Dashboard</a></li>
@@ -180,7 +18,7 @@
         </div>
 
         <div class="logo-container">
-          <img src="images/NXP.png" alt="NextPlay Logo" class="center-logo" />
+          <img src="images/NXP.png" alt="NextPlay Logo" onerror: this.src='https://via.placeholder.com/150x50/000000/ffffff?text=NEXTPLAY'>
         </div>
 
         <div class="nav-group right">
@@ -196,13 +34,16 @@
     </header>
 
     <section class="hero">
-      <h2>Make Smarter Sports Decisions</h2>
-      <p>Analyze players, track trends, and gain the competitive edge.</p>
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>WIN THE</h1>
+      </div>
 
       <section class="cards">
         <div class="card">
           <h3>Trending Players</h3>
-          <p>See which athletes are performing at their peek.</p>
+          <p>See which athletes are performing at their peak.</p>
         </div>
         <div class="card">
           <h3>Matchup Insights</h3>
