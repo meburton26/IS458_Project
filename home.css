@@ -1,9 +1,7 @@
-root {
+:root {
   /*Computer Science classes and notes*/
   --primary: #ff2c2c;
-  --accent: #802018;
   --bg: #050505;
-  --card-bg: rgba(255, 255, 255, 0.05);
 }
 * {
   margin: 0px;
@@ -12,30 +10,21 @@ root {
 }
 
 body {
-  background-color: var(--bg); /*W3Schools*/
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(5, 5, 5, 0.9)),
+    url("https://images.unsplash.com/photo-1546519638-68e109498ffc")
+      center/cover no-repeat fixed;
   font-family: "Inter", sans-serif;
-  background-color: white;
-  line-height: 1.6;
-  overflow-x: hidden; /*W3Schools*/
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Navbar */
-.navbar {
-  background: #0a0a0a;
-  padding: 8px 5%;
-  text-align: right;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #666;
-  border-bottom: 1px solid #1a1a1a;
-}
-
 header {
-  position: sticky;
-  top: 0px;
   width: 100%;
-  background: rgba(5, 5, 5, 0.95);
+  background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(10px);
   display: flex;
   justify-content: space-between;
@@ -46,17 +35,9 @@ header {
 }
 
 .nav-group {
-  flex: 1;
   display: flex;
-  align-items: center;
-}
-
-.nav-group.left {
-  align-items: flex-start;
-}
-
-.nav-group.right {
-  justify-content: flex-end;
+  list-style: none;
+  gap: 20px;
 }
 
 .nav-group a {
@@ -66,85 +47,63 @@ header {
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  transition: 0.3s;
-}
-
-.nav-group a:hover {
-  color: var(--primary); /* Computer Science Classes and Notes */
 }
 
 /* Logo */
-.logo-container {
-  flex: 0 0 auto;
-  padding: 0 20px;
-}
-
 .logo-container img {
-  height: 140px;
-  filter: drop-shadow(0 0 10px rgba(255, 44, 44, 0.3));
+  height: 80px;
 }
 
 /*Hero and Cards*/
 .hero {
-  position: relative;
-  min-height: 80px;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 100px 20px;
-}
-
-.hero-bg {
-  position: absolute;
-  background: url("https://images.unsplash.com/photo-1546519638-68e109498ffc");
-  z-index: -2;
-}
-
-.hero-overlay {
-  position: absolute;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.4) 0%,
-    rgba(5, 5, 5, 1) 100%
-  ); /*W3Schools*/
-  z-index: -1;
+  padding: 20px;
 }
 
 .hero h1 {
   font-family: "Oswald", sans-serif;
-  font-size: 11px;
-  line-height: 0.9;
+  font-size: 40px;
+  line-height: 0.85;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  color: white;
 }
 
 .hero h1 span {
   display: block;
-  color: transparent;
+  color: #ffffff;
+  -webkit-text-stroke: 1.5px white;
+}
+
+.hero p {
+  margin-top: 15px;
+  max-width: 500px;
+  color: #cccccc;
 }
 
 .btn {
   font-family: "Oswald", sans-serif;
-  padding: 18px 40px;
+  padding: 18px 30px;
   background-color: var(--primary);
   color: white;
   text-transform: uppercase;
   font-weight: 700;
   text-decoration: none;
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 30px;
   transition: 0.3s;
 }
 
 .btn:hover {
   background-color: white;
   color: black;
-  transform: scale(1.05);
 }
 
-/* Information Card */
+/* Information Card 
 .cards-section {
   padding: 0 100px 5%;
   background: var(--bg);
@@ -175,41 +134,20 @@ header {
   font-size: 14px;
   color: #bbbbbb;
 }
+  */
 
 footer {
   text-align: center;
-  padding: 60px 20px;
-  border-top: 1px solid #1a1a1a;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 30px;
   color: #666;
   font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-@media (max-width: 250px) {
-  header {
-    flex-direction: column;
-    padding: 20px;
-  }
-  .nav-group {
-    width: 100%;
-    justify-content: center;
-    margin: 10px 0;
-  }
-  .logo-container {
-    order: -1;
-  }
-  .nav-left {
-    order: 1;
-  }
-  .nav-right {
-    order: 2;
-  }
 }
 .search-bar {
-  padding: 6px 10px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid #333333;
+  color: white;
   border-radius: 4px;
-  border: none;
-  width: 150px;
-  outline: none;
+  margin-left: 15px;
 }
