@@ -69,12 +69,11 @@ header {
 
 .nav-group.right {
   gap: 1rem;
-  margin-right: 0.7em;
+  margin-right: 1em;
 }
 
 .nav-group.left {
   gap: 1rem;
-  margin-left: 0.7em;
 }
 
 .search-bar {
@@ -88,7 +87,9 @@ header {
 }
 
 .logo-container img {
-  width: 8rem;
+  width: 10rem;
+  margin: auto;
+  margin-left: 3em;
 }
 
 /* Hero */
@@ -117,7 +118,7 @@ header {
 }
 
 .hero p {
-  padding: .4em;
+  padding: 0.4em;
   margin: 1rem;
   max-width: 37rem;
   color: #cccccc;
