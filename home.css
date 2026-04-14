@@ -69,6 +69,12 @@ header {
 
 .nav-group.right {
   gap: 1rem;
+  margin-right: 70px;
+}
+
+.nav-group.left {
+  gap: 1rem;
+  margin-left: 70px;
 }
 
 .search-bar {
