@@ -80,6 +80,14 @@ header {
   margin-left: 1rem;
 }
 
+/* Hamburger */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap:;
+}
+
 /* Search */
 .search-bar {
   width: 8rem;
@@ -91,7 +99,7 @@ header {
   border-radius: 0.25rem;
 }
 
-/* ✅ CENTERED + LOWER + BIGGER LOGO */
+/* CENTERED + LOWER + BIGGER LOGO */
 .logo-container {
   position: absolute;
   left: 50%;
