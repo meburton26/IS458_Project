@@ -80,13 +80,71 @@ header {
   margin-left: 1rem;
 }
 
-/* Hamburger */
-.menu-toggle {
+/* Hamburger 
+.menu-checkbox {
+  display: none;
+}
+
+.hamburger {
   display: none;
   flex-direction: column;
+  gap: 0.35rem;
   cursor: pointer;
-  gap:;
+  z-index: 10;
 }
+
+.bar {
+  width: 1.6rem;
+  height: 1.6rem;
+  background-color: white;
+  border-radius: 0.1rem;
+}
+
+@media (max-width: 62rem) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-container {
+    display: none;
+    position: relative;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    flex-direction: column;
+    padding: 2rem 0;
+    text-align: center;
+  }
+
+  .menu-checkbox:checked ~ .nav-container {
+    display: flex;
+  }
+
+  .nav-group ul {
+    flex-direction: column;
+    gap: 1.2rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .nav-group.right {
+    margin: 0;
+    flex-direction: column;
+  }
+
+  .search-bar {
+    width: 80%;
+    margin-top: 1rem;
+  }
+
+  .logo-container {
+    top: 50%;
+  }
+
+  .logo-container img {
+    width: 8rem;
+  }
+} */
 
 /* Search */
 .search-bar {
