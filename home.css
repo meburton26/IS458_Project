@@ -14,7 +14,9 @@ body {
   position: relative;
   background: url("https://images.unsplash.com/photo-1546519638-68e109498ffc")
     no-repeat center/cover;
-  font-family: "Inter", sans-serif;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
   color: white;
   min-height: 100vh;
   display: flex;
@@ -44,7 +46,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 3%;
-  height: 100px; /* ✅ gives space for logo movement */
+  height: 6.25ems; /* gives space for logo movement */
 }
 
 /* Navigation */
@@ -64,6 +66,8 @@ header {
   text-decoration: none;
   color: white;
   font-family: "Oswald", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
   font-size: 0.9rem;
   white-space: nowrap;
 }
@@ -139,6 +143,8 @@ header {
   color: white;
   text-decoration: none;
   font-family: "Oswald", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
   font-size: 0.9rem;
   transition: 0.3s;
 }
