@@ -5,7 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>News</title>
     <link rel="stylesheet" href="home.css" />
-    <style></style>
+    <style>
+      .news-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(18rem));
+        gap: 2rem;
+        padding: 5% 10%;
+        flex: 1;
+      }
+
+      .news-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-left: 0.2rem solid var(--primary);
+        padding: 1.5rem;
+        transition: 0.3s;
+      }
+
+      .news-card:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-0.3rem);
+      }
+
+      .date {
+        color: var(--primary);
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .news-card h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .news-card {
+        color: #cccccc;
+        font-weight: normal;
+        text-transform: none;
+        line-height: 1.6;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <section class="news-container">
+      <article class="news-card">
+        <div class="date">APRIL 14, 2026</div>
+        <h2>NXP Engine Update 4.0</h2>
+        <p>
+          Our predictive algorithm now includes real-time biometric data for
+          more accurate player performance forecasting.
+        </p>
+      </article>
+
+      <article class="news-card">
+        <div class="date">APRIL 10, 2026</div>
+        <h2>Draft p[rospect Analysis</h2>
+        <p>
+          Now deep-dive metrics are now available fro the upcoming 2026 rookie
+          class. Analyze the next generation of stars.
+        </p>
+      </article>
+
+      <article class="news-card">
+        <div class="date">APRIL 02, 2026</div>
+        <h2>Global Partnerships</h2>
+        <p>
+          NextPlay is proud to announce exclusive data-sharing agreements with
+          three major international leagues.
+        </p>
+      </article>
+    </section>
+  </body>
 </html>
