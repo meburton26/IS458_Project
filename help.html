@@ -3,7 +3,160 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Help | NextPlay (NXP)</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Main shared styles -->
+    <link rel="stylesheet" href="home.css" />
+
+    <!-- ✅ Embedded Help Page Styles -->
+    <style>
+      .faq {
+        max-width: 43.75rem;
+        margin: 3rem auto;
+        padding: 1rem;
+      }
+
+      .faq h1 {
+        text-align: center;
+        font-family: "Oswald", sans-serif;
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .faq-item {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 0.0625rem solid #333;
+      }
+
+      .faq-item h3 {
+        font-family: "Oswald", sans-serif;
+        margin-bottom: 0.5rem;
+      }
+
+      .faq-item p {
+        color: #ccc;
+        font-size: 0.95rem;
+      }
+
+      .contact {
+        max-width: 37.5rem;
+        margin: 2rem auto 4rem;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      .contact h2 {
+        font-family: "Oswald", sans-serif;
+        margin-bottom: 1rem;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      input,
+      textarea {
+        padding: 0.6rem;
+        border: 0.0625rem solid #333;
+        background: rgba(255,255,255,0.1);
+        color: white;
+        border-radius: 0.25rem;
+        font-size: 1rem;
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: #aaa;
+      }
+
+      /* Highlight active nav link */
+      .nav-group a.active {
+        color: var(--primary);
+      }
+    </style>
   </head>
-  <body></body>
+
+  <body>
+    <header>
+      <nav class="nav-group left">
+        <ul>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="player_insights.html">Player Insights</a></li>
+          <li><a href="matchup.html">Matchups</a></li>
+          <li><a href="trends.html">Trends</a></li>
+        </ul>
+      </nav>
+
+      <div class="logo-container">
+        <img src="images/NXP.png" alt="NextPlay Logo" />
+      </div>
+
+      <nav class="nav-group right">
+        <ul>
+          <li><a href="metrics.html">Quick Metrics</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="account.html">My Account</a></li>
+          <li><a href="help.html" class="active">Help</a></li>
+        </ul>
+        <input type="text" placeholder="Search..." class="search-bar" />
+      </nav>
+    </header>
+
+    <!-- FAQ -->
+    <section class="faq">
+      <h1>Help & FAQ</h1>
+
+      <div class="faq-item">
+        <h3>How do I access my dashboard?</h3>
+        <p>Navigate to the Dashboard page using the menu above.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What are Player Insights?</h3>
+        <p>
+          Player Insights provide advanced analytics and performance breakdowns
+          for individual athletes.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>How often is data updated?</h3>
+        <p>Data updates regularly to reflect recent games and trends.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Where can I find trends?</h3>
+        <p>Visit the Trends page from the navigation menu.</p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact">
+      <h2>Contact Support</h2>
+
+      <form>
+        <label for="email">Your Email</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+
+        <label for="message">Your Message</label>
+        <textarea id="message" rows="4" placeholder="How can we help?" required></textarea>
+
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 NextPlay (NXP) | Sports Analytics Dashboard</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
