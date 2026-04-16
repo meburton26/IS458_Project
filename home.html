@@ -14,28 +14,31 @@
   </head>
   <body>
     <header>
-      <nav class="nav-group left">
-        <ul>
-          <li><a href="dashboard.html">Dashboard</a></li>
-          <li><a href="player_insights.html">Player Insights</a></li>
-          <li><a href="matchup.html">Matchups</a></li>
-          <li><a href="trends.html">Trends</a></li>
-        </ul>
-      </nav>
-
-      <div class="logo-container">
-        <img src="images/NXP.png" alt="NextPlay Logo" />
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
 
-      <nav class="nav-group right">
-        <ul>
-          <li><a href="metrics.html">Quick Metrics</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="account.html">My Account</a></li>
-          <li><a href="help.html">Help</a></li>
-        </ul>
-        <input type="text" placeholder="Search..." class="search-bar" />
-      </nav>
+      <div class="nav-wrapper" id="navWrapper">
+        <nav class="nav-group left">
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="player_insights.html">Player Insights</a></li>
+            <li><a href="matchup.html">Matchups</a></li>
+            <li><a href="trends.html">Trends</a></li>
+          </ul>
+        </nav>
+        <nav class="nav-group right">
+          <ul>
+            <li><a href="metrics.html">Quick Metrics</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="account.html">My Account</a></li>
+            <li><a href="help.html">Help</a></li>
+          </ul>
+          <input type="text" placeholder="Search..." class="search-bar" />
+        </nav>
+      </div>
     </header>
 
     <section class="hero">
@@ -52,6 +55,12 @@
     <footer>
       <p>&copy; 2026 NextPlay (NXP) | Sports Analytics Dashboard</p>
     </footer>
+    <script>
+      function toggleMenu() {
+        const nav = document.getElementById("narWrapper");
+        nav.classList.toggle("active");
+      }
+    </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
