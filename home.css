@@ -36,7 +36,6 @@ body::before {
   z-index: 0;
 }
 
-/* Header Base */
 header {
   position: relative;
   display: flex;
@@ -54,35 +53,37 @@ header {
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
-  pointer-events: auto;
+  /* Allows clicks to pass through empty space to elements behind it */
+  pointer-events: none;
 }
 
 .logo-container img {
   width: clamp(6rem, 15vw, 12rem);
   height: auto;
   display: block;
+  pointer-events: auto; /* Re-enables clicking on the actual logo image */
 }
 
-/* Nav Groups */
+/* Navigation Wrapper */
 .nav-wrapper {
   display: flex;
   width: 100%;
   justify-content: space-between;
   z-index: 5;
+  /* Prevents the container from blocking the hamburger click on the left */
+  pointer-events: none;
+}
+
+.nav-group {
+  display: flex;
+  align-items: center;
+  pointer-events: auto; /* Re-enables clicking on the actual links */
 }
 
 .nav-group ul {
   display: flex;
   gap: 1.5rem;
   list-style: none;
-}
-
-/* Right Group Styling - Search below links */
-.nav-group.right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.5rem; /* Space between links and search bar */
 }
 
 .nav-group a {
@@ -98,31 +99,23 @@ header {
   color: var(--primary);
 }
 
-/* Search Bar Styling */
-.search-bar {
-  width: 8.5rem;
-  padding: 0.4rem 0.8rem;
-  font-size: 0.8rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 0.05rem solid rgba(255, 255, 255, 0.2);
-  color: white;
-  border-radius: 0.25rem;
-}
-
-/* HAMBURGER - Higher Z-Index and isolated */
+/* HAMBURGER - Massive Click Priority */
 .hamburger {
   display: none;
   flex-direction: column;
   gap: 0.4rem;
   cursor: pointer;
-  z-index: 4000; /* Increased to ensure it's on the very top */
+  z-index: 9999;
   position: absolute;
   left: 3vw;
-  padding: 1rem; /* Increase hit area for easier clicking */
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 1.5rem; /* Large invisible hit-box */
 }
 
 .hamburger span {
-  width: 2rem;
+  display: block;
+  width: 2.2rem;
   height: 0.15rem;
   background: white;
   transition: 0.3s;
@@ -142,9 +135,10 @@ header {
     left: 0;
     width: 100%;
     background: rgba(0, 0, 0, 0.98);
-    padding: 3rem 0;
+    padding: 4vh 0;
     text-align: center;
-    z-index: 3000;
+    z-index: 5000;
+    pointer-events: auto; /* Links need to be clickable when menu is open */
   }
 
   .nav-wrapper.active {
@@ -153,14 +147,14 @@ header {
 
   .nav-group {
     flex-direction: column !important;
-    align-items: center !important;
+    justify-content: center;
     margin: 0 !important;
-    gap: 1.5rem;
+    padding: 2vh 0;
   }
 
   .nav-group ul {
     flex-direction: column;
-    gap: 1.2rem;
+    gap: 2.5vh;
   }
 }
 
