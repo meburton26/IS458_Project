@@ -10,55 +10,99 @@
       rel="stylesheet"
     />
 
-    <!-- Main shared styles -->
-    <link rel="stylesheet" href="home.css" />
-
-    <!-- Embedded Help Page Styles -->
     <style>
+      :root {
+        --primary: #ff2c2c;
+        --bg: #050505;
+      }
+
+      html {
+        font-size: 100%;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
       body {
         margin: 0;
         font-family: "Oswald", sans-serif;
+        text-transform: uppercase;
+        font-weight: bold;
         color: white;
+        min-height: 100vh;
         background:
-          linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.25)),
-          url(images/homepage_image.png) center/cover no-repeat fixed;
+          linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+          url("images/homepage_image.png") no-repeat center/cover fixed;
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
       }
 
+      /* Header Base */
       header {
+        position: relative;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1rem 2rem;
+        padding: 2vh 3vw;
+        height: 12vh;
+        z-index: 2000;
+      }
+
+      /* LOGO - Centered and non-blocking */
+      .logo-container {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        pointer-events: none;
+      }
+
+      .logo-container img {
+        width: clamp(6rem, 15vw, 10rem);
+        height: auto;
+        display: block;
+        pointer-events: auto;
+      }
+
+      /* Navigation */
+      .nav-wrapper {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        z-index: 5;
       }
 
       .nav-group ul {
         list-style: none;
         display: flex;
-        gap: 1.2rem;
+        gap: 1.5rem;
         padding: 0;
         margin: 0;
       }
 
       .nav-group a {
-        color: white;
+        color: white !important; /* Forces text to stay white */
         text-decoration: none;
         font-size: 0.9rem;
         position: relative;
-        transition: 0.3s;
+        padding-bottom: 0.4rem;
+        transition: color 0.3s ease;
       }
 
-      .nav-group a:hover {
-        color: #ff4d4d;
-      }
-
+      /* Red Underline on HOVER only */
       .nav-group a::after {
         content: "";
         position: absolute;
         left: 0;
-        bottom: -0.3rem;
+        bottom: 0;
         width: 0%;
-        height: 0.1rem;
-        background: var(--primary);
+        height: 0.15rem;
+        background-color: var(--primary);
         transition: width 0.3s ease;
       }
 
@@ -66,200 +110,194 @@
         width: 100%;
       }
 
-      .search-bar {
-        margin-left: 1rem;
-        padding: 0.4rem;
-        border-radius: 5px;
-        border: none;
+      /* HAMBURGER - Top Layer */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 0.4rem;
+        cursor: pointer;
+        z-index: 9999;
+        position: absolute;
+        left: 3vw;
+        padding: 1rem;
       }
 
-      .logo-container {
-        height: 8.5rem;
+      .hamburger span {
+        display: block;
+        width: 2rem;
+        height: 0.15rem;
+        background: white;
       }
 
-      .faq {
-        max-width: 43.75rem;
-        margin: 5rem auto 3rem;
-        padding: 2rem;
-        background: rgba(0, 0, 0, 0.65);
-        border-radius: 15px;
-        backdrop-filter: blur(0.625rem);
-        box-shadow: 0 0.625rem 1.8rem rgba(0, 0, 0, 0.6);
+      /* Content Sections */
+      .faq,
+      .contact {
+        max-width: 45rem;
+        margin: 4vh auto;
+        padding: 2.5rem;
+        background: rgba(0, 0, 0, 0.75);
+        border-radius: 1rem;
+        backdrop-filter: blur(10px);
+        position: relative;
+        z-index: 1;
       }
 
       .faq h1 {
         text-align: center;
-        font-size: 2.8rem;
+        font-size: 2.5rem;
         margin-bottom: 2rem;
-        letter-spacing: 0.63rem;
+        letter-spacing: 0.5rem;
       }
 
       .faq-item {
         margin-bottom: 1.5rem;
-        padding: 1rem;
-        border-radius: 0.625rem;
-        transition: 0.3s;
-      }
-
-      .faq-item:hover {
-        background: rgba(255, 255, 255, 0.05);
-        transform: translateY(-1rem);
       }
 
       .faq-item h3 {
-        margin-bottom: 0.5rem;
         font-size: 1.2rem;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
       }
 
       .faq-item p {
-        color: #e0e0e0;
-        font-size: 0.95rem;
-      }
-
-      .contact {
-        max-width: 37.5rem;
-        margin: 2rem auto 4rem;
-        padding: 2rem;
-        text-align: center;
-        background: rgba(0, 0, 0, 0.65);
-        border-radius: 0.9rem;
-        backdrop-filter: blur(0.6rem);
-        box-shadow: 0 0.6rem 1rem rgba(0, 0, 0, 0.6);
-      }
-
-      .contact h2 {
-        margin-bottom: 1rem;
-        font-size: 1.8rem;
+        text-transform: none;
+        font-weight: normal;
+        color: #cccccc;
       }
 
       form {
         display: flex;
         flex-direction: column;
-        gap: 0.75rem;
+        gap: 1.2rem;
       }
 
       input,
       textarea {
-        padding: 0.6rem;
-        border: 1rem solid rgba(255, 255, 255, 0.2);
-        background: rgba(255, 255, 255, 0.08);
+        padding: 0.8rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.05);
         color: white;
         border-radius: 0.4rem;
-        font-size: 1rem;
       }
 
-      input::placeholder,
-      textarea::placeholder {
-        color: #bbbbbb;
-      }
-
-      input:focus,
-      textarea:focus {
-        outline: none;
-        border-color: #ff4d4d;
-        box-shadow: 0 0 0.5rem rgba(255, 77, 77, 0.5);
-      }
-
-      .button.btn {
-        background: #ff4d4d;
+      .btn-submit {
+        background: var(--primary);
         color: white;
         border: none;
-        padding: 0.7rem;
-        border-radius: 0.4rem;
-        transition: 0.3s;
+        padding: 1rem;
         font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: 0.3s;
       }
 
-      .button.btn:hover {
-        background: #ff1a1a;
-        transform: scale(1.03);
+      .btn-submit:hover {
+        background: white;
+        color: black;
       }
 
       footer {
         text-align: center;
-        padding: 1rem;
-        font-size: 0.9rem;
-        color: #cccccc;
+        padding: 3vh;
+        font-size: 0.8rem;
+        color: #777;
+        background: rgba(0, 0, 0, 0.9);
+        margin-top: auto;
+      }
+
+      /* Mobile Logic */
+      @media (max-width: 64rem) {
+        .hamburger {
+          display: flex;
+        }
+        .nav-wrapper {
+          display: none;
+          flex-direction: column;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background: rgba(0, 0, 0, 0.98);
+          padding: 4vh 0;
+          text-align: center;
+          z-index: 5000;
+        }
+        .nav-wrapper.active {
+          display: flex;
+        }
+        .nav-group {
+          flex-direction: column;
+          gap: 2rem;
+          margin-bottom: 2rem;
+        }
+        .nav-group ul {
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+        .nav-group a {
+          font-size: 1.2rem;
+        }
+        /* Underline usually looks messy on vertical mobile menus, so we switch to red text for the current page */
+        .nav-group a.active {
+          color: var(--primary) !important;
+        }
+        .nav-group a::after {
+          display: none;
+        }
       }
     </style>
   </head>
 
   <body>
     <header>
-      <nav class="nav-group left">
-        <ul>
-          <li><a href="dashboard.html">Dashboard</a></li>
-          <li><a href="player_insights.html">Player Insights</a></li>
-          <li><a href="matchup.html">Matchups</a></li>
-          <li><a href="trends.html">Trends</a></li>
-        </ul>
-      </nav>
-
       <div class="logo-container">
         <img src="images/NXP.png" alt="NextPlay Logo" />
       </div>
 
-      <nav class="nav-group right">
-        <ul>
-          <li><a href="metrics.html">Quick Metrics</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="account.html">My Account</a></li>
-          <li><a href="help.html" class="active">Help</a></li>
-        </ul>
-        <input type="text" placeholder="Search..." class="search-bar" />
-      </nav>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="nav-wrapper" id="navWrapper">
+        <nav class="nav-group left">
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="player_insights.html">Player Insights</a></li>
+            <li><a href="matchup.html">Matchups</a></li>
+            <li><a href="trends.html">Trends</a></li>
+          </ul>
+        </nav>
+        <nav class="nav-group right">
+          <ul>
+            <li><a href="metrics.html">Quick Metrics</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="account.html">My Account</a></li>
+            <li><a href="help.html">Help</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
-    <!-- FAQ -->
     <section class="faq">
       <h1>Help & FAQ</h1>
-
       <div class="faq-item">
         <h3>How do I access my dashboard?</h3>
         <p>Navigate to the Dashboard page using the menu above.</p>
       </div>
-
       <div class="faq-item">
         <h3>What are Player Insights?</h3>
-        <p>
-          Player Insights provide advanced analytics and performance breakdowns
-          for individual athletes.
-        </p>
-      </div>
-
-      <div class="faq-item">
-        <h3>How often is data updated?</h3>
-        <p>Data updates regularly to reflect recent games and trends.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>Where can I find trends?</h3>
-        <p>Visit the Trends page from the navigation menu.</p>
+        <p>Advanced analytics and performance breakdowns for athletes.</p>
       </div>
     </section>
 
-    <!-- Contact -->
     <section class="contact">
       <h2>Contact Support</h2>
-
       <form>
-        <label for="email">Your Email</label>
-        <input
-          type="email"
-          id="email"
-          placeholder="Enter your email"
-          required
-        />
-
-        <label for="message">Your Message</label>
-        <textarea
-          id="message"
-          rows="4"
-          placeholder="How can we help?"
-          required
-        ></textarea>
-
-        <button type="submit" class="btn">Send Message</button>
+        <input type="email" placeholder="Your Email" required />
+        <textarea rows="4" placeholder="How can we help?" required></textarea>
+        <button type="submit" class="btn-submit">Send Message</button>
       </form>
     </section>
 
@@ -267,6 +305,11 @@
       <p>&copy; 2026 NextPlay (NXP) | Sports Analytics Dashboard</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function toggleMenu() {
+        const nav = document.getElementById("navWrapper");
+        nav.classList.toggle("active");
+      }
+    </script>
   </body>
 </html>
