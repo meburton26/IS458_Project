@@ -1,0 +1,169 @@
+:root {
+  --primary: #ff2c2c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  /* Background with darker overlay for readability */
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("images/Baseball Background.png") no-repeat center/cover fixed;
+}
+
+/* Header & Nav Styling */
+header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2vh 3vw;
+  height: 12vh;
+  z-index: 2000;
+}
+
+.logo-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.logo-container img {
+  width: clamp(6rem, 15vw, 10rem);
+  pointer-events: auto;
+}
+
+.nav-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.nav-group ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+}
+
+.nav-group a {
+  color: white !important;
+  text-decoration: none;
+  font-size: 0.9rem;
+  position: relative;
+  padding-bottom: 0.4rem;
+  transition: 0.3s;
+}
+
+/* Red Underline on Hover */
+.nav-group a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 0.15rem;
+  background-color: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.nav-group a:hover::after {
+  width: 100%;
+}
+
+/* Layout for Cards on the Right */
+main {
+  display: flex;
+  justify-content: flex-end; /* Pushes content to the right */
+  flex: 1;
+  padding: 5vh 5vw;
+}
+
+.news-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 25rem; /* Sets the width of the right-hand column */
+}
+
+.news-card {
+  background: rgba(0, 0, 0, 0.7);
+  border-left: 0.3rem solid var(--primary);
+  padding: 1.5rem;
+  transition: 0.3s;
+  backdrop-filter: blur(8px);
+}
+
+.news-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-10px); /* Slides slightly left on hover */
+}
+
+.date {
+  color: var(--primary);
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.news-card h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.news-card p {
+  color: #cccccc;
+  font-weight: normal;
+  text-transform: none;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  width: 2rem;
+  height: 0.15rem;
+  background: white;
+}
+
+footer {
+  text-align: center;
+  padding: 2vh;
+  font-size: 0.8rem;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 64rem) {
+  .hamburger {
+    display: flex;
+  }
+  .nav-wrapper {
+    display: none;
+  }
+  main {
+    justify-content: center;
+  } /* Centers cards on mobile */
+}

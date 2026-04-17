@@ -4,88 +4,80 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>News</title>
-    <link rel="stylesheet" href="home.css" />
-    <style>
-      body {
-        margin: 0;
-        font-family: "Oswald", sans-serif;
-        text-transform: uppercase;
-        font-weight: bold;
-        color: white;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        background:
-          linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-          url(images/Baseball\ Background.png);
-      }
-      .news-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(18rem));
-        gap: 2rem;
-        padding: 5% 10%;
-        flex: 1;
-      }
-
-      .news-card {
-        background: rgba(255, 255, 255, 0.05);
-        border-left: 0.2rem solid var(--primary);
-        padding: 1.5rem;
-        transition: 0.3s;
-      }
-
-      .news-card:hover {
-        background: rgba(255, 255, 255, 0.1);
-        transform: translateY(-0.3rem);
-      }
-
-      .date {
-        color: var(--primary);
-        font-size: 0.8rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .news-card h2 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-      }
-
-      .news-card {
-        color: #cccccc;
-        font-weight: normal;
-        text-transform: none;
-        line-height: 1.6;
-      }
-    </style>
+    <link rel="stylesheet" href="news.css" />
   </head>
   <body>
-    <section class="news-container">
-      <article class="news-card">
-        <div class="date">APRIL 14, 2026</div>
-        <h2>NXP Engine Update 4.0</h2>
-        <p>
-          Our predictive algorithm now includes real-time biometric data for
-          more accurate player performance forecasting.
-        </p>
-      </article>
+    <header>
+      <div class="logo-container">
+        <img src="images/NXP.png" alt="NextPlay Logo" />
+      </div>
 
-      <article class="news-card">
-        <div class="date">APRIL 10, 2026</div>
-        <h2>Draft p[rospect Analysis</h2>
-        <p>
-          Now deep-dive metrics are now available fro the upcoming 2026 rookie
-          class. Analyze the next generation of stars.
-        </p>
-      </article>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
 
-      <article class="news-card">
-        <div class="date">APRIL 02, 2026</div>
-        <h2>Global Partnerships</h2>
-        <p>
-          NextPlay is proud to announce exclusive data-sharing agreements with
-          three major international leagues.
-        </p>
-      </article>
-    </section>
+      <div class="nav-wrapper" id="navWrapper">
+        <nav class="nav-group left">
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="player_insights.html">Player Insights</a></li>
+            <li><a href="matchup.html">Matchups</a></li>
+            <li><a href="trends.html">Trends</a></li>
+          </ul>
+        </nav>
+        <nav class="nav-group right">
+          <ul>
+            <li><a href="metrics.html">Quick Metrics</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="account.html">My Account</a></li>
+            <li><a href="help.html">Help</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="news-container">
+        <article class="news-card">
+          <div class="date">APRIL 14, 2026</div>
+          <h2>NXP Engine Update 4.0</h2>
+          <p>
+            Our predictive algorithm now includes real-time biometric data for
+            more accurate player performance forecasting.
+          </p>
+        </article>
+
+        <article class="news-card">
+          <div class="date">APRIL 10, 2026</div>
+          <h2>Draft Prospect Analysis</h2>
+          <p>
+            Deep-dive metrics are now available for the upcoming 2026 rookie
+            class. Analyze the next generation of stars.
+          </p>
+        </article>
+
+        <article class="news-card">
+          <div class="date">APRIL 02, 2026</div>
+          <h2>Global Partnerships</h2>
+          <p>
+            NextPlay is proud to announce exclusive data-sharing agreements with
+            three major international leagues.
+          </p>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 NextPlay (NXP) | Sports Analytics Dashboard</p>
+    </footer>
+
+    <script>
+      function toggleMenu() {
+        const nav = document.getElementById("navWrapper");
+        nav.classList.toggle("active");
+      }
+    </script>
   </body>
 </html>
