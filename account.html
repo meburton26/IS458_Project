@@ -5,6 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Account</title>
   </head>
+
+  <script>
+    function createAccount() {
+      var name = document.getElementById("inputName").value;
+      var email = document.getElementById("inputEmail").value;
+      var plan = document.getElementById("inputPlan").value;
+      var date = new Date().toLocaleDateString();
+
+      // YouTube & W3Schools
+      localStorage.setItem("name", name);
+      localStorage.setItem("email", email);
+      localStorage.setItem("plan", plan);
+      localStorage.setItem("date", date);
+
+      document.getElementById("name").innerHTML = name;
+      document.getElementById("email").innerHTML = email;
+      document.getElementById("plan").innerHTML = plan;
+      document.getElementById("date").innerHTML = date;
+    }
+
+    // YouTube & W3Schools
+    window.onload = function () {
+      document.getElementById("name").innerHTML =
+        localStorage.getItem("name") || "-";
+      document.getElementById("email").innerHTML =
+        localStorage.getItem("email") || "-";
+      document.getElementById("plan").innerHTML =
+        localStorage.getItem("plan") || "-";
+      document.getElementById("date").innerHTML =
+        localStorage.getItem("date") || "-";
+    };
+  </script>
+
   <body>
     <header>
       <div class="logo-container">
@@ -46,6 +79,10 @@
           <option value="Pro">Pro Plan</option>
           <option value="Elite">Elite Plan</option>
         </select>
+
+        <button onclick="createAccount()" class="btn-custom">
+          Create Account
+        </button>
 
         <div class="account-info">
           <p>Name: <span id="name"></span></p>
