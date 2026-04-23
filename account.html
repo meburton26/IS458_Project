@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Account</title>
+    <link href="account.css" rel="stylesheet" />
   </head>
 
   <script>
@@ -36,6 +37,11 @@
       document.getElementById("date").innerHTML =
         localStorage.getItem("date") || "-";
     };
+
+    function toggleMenu() {
+      const nav = document.getElementById("navWrapper");
+      nav.classList.toggle("active");
+    }
   </script>
 
   <body>
@@ -44,6 +50,12 @@
         <a href="home.html">
           <img src="./images/NXP.png" alt="NextPLay Logo" />
         </a>
+      </div>
+
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
 
       <div class="nav-wrapper" id="navWrapper">

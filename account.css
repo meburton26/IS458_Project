@@ -1,0 +1,226 @@
+:root {
+  --primary: #ff2c2c;
+  --bg: #050505;
+}
+
+html {
+  font-size: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url("./images/golf.png") no-repeat center/cover fixed;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* DARK OVERLAY */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 0;
+}
+
+/* HEADER */
+header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2vh 3vw;
+  height: 12vh;
+  z-index: 10;
+}
+
+/* LOGO */
+.logo-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.logo-container img {
+  width: clamp(6rem, 15vw, 12rem);
+  height: auto;
+  cursor: pointer;
+}
+
+/* NAVIGATION */
+.nav-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.nav-group ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.nav-group a {
+  text-decoration: none;
+  color: white;
+  font-size: 0.9rem;
+  position: relative;
+}
+
+.nav-group a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.25rem;
+  width: 0%;
+  height: 0.125rem;
+  background: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.nav-group a:hover::after {
+  width: 100%;
+}
+
+/* HAMBURGER (FIXED) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 0.4rem;
+  cursor: pointer;
+  position: absolute;
+  left: 3vw;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+}
+
+.hamburger span {
+  width: 2.2rem;
+  height: 0.15rem;
+  background: white;
+}
+
+/* ACCOUNT SECTION */
+.account-container {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5vh 5vw;
+}
+
+/* CARD */
+.account-card {
+  width: 100%;
+  max-width: 40rem;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 3rem;
+  border: 0.0625rem solid #222;
+  box-shadow: 0 0 1.5rem rgba(255, 44, 44, 0.2);
+}
+
+.account-card h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+/* INPUTS */
+input,
+select {
+  width: 100%;
+  padding: 0.8rem;
+  margin: 0.5rem 0;
+  background: #111;
+  border: 0.0625rem solid #333;
+  color: white;
+  font-size: 0.9rem;
+}
+
+/* BUTTONS */
+.btn-custom {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  background: var(--primary);
+  border: none;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.btn-custom:hover {
+  background: white;
+  color: black;
+}
+
+/* ACCOUNT INFO */
+.account-info {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 0.0625rem solid #222;
+}
+
+.account-info p {
+  margin: 0.6rem 0;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 2vh;
+  font-size: 0.75rem;
+  color: #777;
+  background: rgba(0, 0, 0, 0.8);
+  position: relative;
+  z-index: 1;
+}
+
+/* MOBILE MENU */
+@media (max-width: 64rem) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-wrapper {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.98);
+    padding: 4vh 0;
+    text-align: center;
+    z-index: 5000;
+  }
+
+  .nav-wrapper.active {
+    display: flex;
+  }
+
+  .nav-group ul {
+    flex-direction: column;
+    gap: 2vh;
+  }
+
+  .nav-group a::after {
+    display: none;
+  }
+}
