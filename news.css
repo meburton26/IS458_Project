@@ -70,6 +70,7 @@ header {
   position: relative;
   padding-bottom: 0.4rem;
   transition: 0.3s;
+  font-weight: bold;
 }
 
 /* Red Underline */
