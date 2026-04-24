@@ -18,7 +18,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
-  /* Background with darker overlay for readability */
+  /* Using your homepage background style for consistency */
   background:
     linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url("images/Baseball Background.png") no-repeat center/cover fixed;
@@ -49,17 +49,18 @@ header {
   pointer-events: auto;
 }
 
+/* Navigation Wrapper */
 .nav-wrapper {
   display: flex;
   width: 100%;
   justify-content: space-between;
+  z-index: 5;
 }
 
 .nav-group ul {
   list-style: none;
   display: flex;
   gap: 1.5rem;
-  margin: 0;
 }
 
 .nav-group a {
@@ -71,7 +72,7 @@ header {
   transition: 0.3s;
 }
 
-/* Red Underline on Hover */
+/* Red Underline */
 .nav-group a::after {
   content: "";
   position: absolute;
@@ -87,12 +88,30 @@ header {
   width: 100%;
 }
 
-/* Layout for Cards on the Right */
+/* Hamburger - Hidden by default */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 0.4rem;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.hamburger span {
+  display: block;
+  width: 2rem;
+  height: 0.15rem;
+  background: white;
+}
+
+/* Main Content Layout */
 main {
   display: flex;
-  justify-content: flex-end; /* Pushes content to the right */
+  justify-content: flex-end;
   flex: 1;
   padding: 5vh 5vw;
+  position: relative;
+  z-index: 1;
 }
 
 .news-container {
@@ -100,7 +119,7 @@ main {
   flex-direction: column;
   gap: 2rem;
   width: 100%;
-  max-width: 25rem; /* Sets the width of the right-hand column */
+  max-width: 25rem;
 }
 
 .news-card {
@@ -113,7 +132,7 @@ main {
 
 .news-card:hover {
   background: rgba(255, 255, 255, 0.1);
-  transform: translateX(-10px); /* Slides slightly left on hover */
+  transform: translateX(-10px);
 }
 
 .date {
@@ -135,35 +154,51 @@ main {
   font-size: 0.95rem;
 }
 
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 0.4rem;
-  cursor: pointer;
-}
-
-.hamburger span {
-  display: block;
-  width: 2rem;
-  height: 0.15rem;
-  background: white;
-}
-
 footer {
   text-align: center;
   padding: 2vh;
   font-size: 0.8rem;
   background: rgba(0, 0, 0, 0.8);
+  position: relative;
+  z-index: 2;
 }
 
+/* --- MOBILE RESPONSIVE LOGIC --- */
 @media (max-width: 64rem) {
   .hamburger {
     display: flex;
   }
+
   .nav-wrapper {
-    display: none;
+    display: none; /* Hide default desktop nav */
+    flex-direction: column;
+    position: absolute;
+    top: 100%; /* Sits right at the bottom of the 12vh header */
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    padding: 4vh 0;
+    text-align: center;
+    z-index: 5000;
   }
-  main {
+
+  /* When JS toggles 'active' */
+  .nav-wrapper.active {
+    display: flex;
+  }
+
+  .nav-group {
+    width: 100%;
     justify-content: center;
-  } /* Centers cards on mobile */
+  }
+
+  .nav-group ul {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 0;
+  }
+
+  main {
+    justify-content: center; /* Center news cards on mobile */
+  }
 }
