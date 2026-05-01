@@ -26,9 +26,6 @@
       min-height: 100vh;
       overflow-x: hidden;
     "
-  <header>
-
-  </header>
   >
     <div
       style="
@@ -38,6 +35,8 @@
         z-index: 0;
       "
     ></div>
+
+    <!-- HEADER -->
     <header
       style="
         position: relative;
@@ -59,13 +58,18 @@
           transform: translate(-50%, -50%);
         "
       >
-      <a href="home.html">
-        <img
-          src="./images/NXP.png"
-          alt="NextPlay Logo"
-          style="width:clamp(6rem,15vw,12rem);height:auto;display:block;cursor:pointer;"
-        />
-      </a>
+        <a href="home.html">
+          <img
+            src="./images/NXP.png"
+            alt="NextPlay Logo"
+            style="
+              width: clamp(6rem, 15vw, 12rem);
+              height: auto;
+              display: block;
+              cursor: pointer;
+            "
+          />
+        </a>
       </div>
 
       <button
@@ -86,11 +90,13 @@
       </button>
     </header>
 
+    <!-- MAIN CONTENT -->
     <main style="position: relative; z-index: 1; padding: 3vh 3vw 5vh">
       <section style="text-align: center; margin-bottom: 3vh">
         <p style="color: #ff2c2c; letter-spacing: 0.15em; margin-bottom: 1vh">
           Live Player Data
         </p>
+
         <h1
           style="
             font-size: clamp(2.8rem, 8vw, 5.5rem);
@@ -105,9 +111,11 @@
               -webkit-text-stroke: 0.08rem white;
               color: transparent;
             "
-            >Metrics</span
           >
+            Metrics
+          </span>
         </h1>
+
         <p
           style="
             max-width: 48rem;
@@ -122,6 +130,7 @@
         </p>
       </section>
 
+      <!-- SUMMARY CARDS -->
       <section
         style="
           display: grid;
@@ -193,6 +202,7 @@
         </div>
       </section>
 
+      <!-- FILTERS -->
       <section
         style="
           background: rgba(0, 0, 0, 0.84);
@@ -214,8 +224,9 @@
               font-size: 0.8rem;
               margin-bottom: 0.5rem;
             "
-            >Search Player</label
           >
+            Search Player
+          </label>
           <input
             id="playerSearch"
             placeholder="Example: Curry"
@@ -240,8 +251,9 @@
               font-size: 0.8rem;
               margin-bottom: 0.5rem;
             "
-            >Results</label
           >
+            Results
+          </label>
           <select
             id="resultCount"
             style="
@@ -279,6 +291,7 @@
         </button>
       </section>
 
+      <!-- PLAYER CARDS -->
       <section
         id="cardContainer"
         style="
@@ -289,6 +302,7 @@
       ></section>
     </main>
 
+    <!-- JAVASCRIPT -->
     <script>
       const API_KEY = "69e71f06-000f-432f-bfe7-db82d4ac391c";
 
@@ -302,10 +316,10 @@
         const cardContainer = document.getElementById("cardContainer");
 
         cardContainer.innerHTML = `
-          <div style="grid-column:1/-1;background:rgba(0,0,0,.84);border:1px solid rgba(255,255,255,.12);border-radius:.35rem;padding:1.5rem;text-align:center;">
-            Loading player metrics...
-          </div>
-        `;
+        <div style="grid-column:1/-1;background:rgba(0,0,0,.84);border:1px solid rgba(255,255,255,.12);border-radius:.35rem;padding:1.5rem;text-align:center;">
+          Loading player metrics...
+        </div>
+      `;
 
         try {
           let url = `${API_URL}?per_page=${resultCount}`;
@@ -315,13 +329,15 @@
           }
 
           const response = await fetch(url, {
+            method: "GET",
             headers: {
               Authorization: API_KEY,
+              Accept: "application/json",
             },
           });
 
           if (!response.ok) {
-            throw new Error("API request failed");
+            throw new Error(`API request failed: ${response.status}`);
           }
 
           const data = await response.json();
@@ -329,10 +345,10 @@
 
           if (players.length === 0) {
             cardContainer.innerHTML = `
-              <div style="grid-column:1/-1;background:rgba(0,0,0,.84);border:1px solid rgba(255,44,44,.5);border-radius:.35rem;padding:1.5rem;text-align:center;">
-                No players found.
-              </div>
-            `;
+            <div style="grid-column:1/-1;background:rgba(0,0,0,.84);border:1px solid rgba(255,44,44,.5);border-radius:.35rem;padding:1.5rem;text-align:center;">
+              No players found.
+            </div>
+          `;
             return;
           }
 
@@ -341,16 +357,19 @@
           updateSummaryCards(metrics);
           renderMetricCards(metrics);
         } catch (error) {
+          console.error(error);
+
           cardContainer.innerHTML = `
-            <div style="grid-column:1/-1;background:rgba(0,0,0,.84);border:1px solid rgba(255,44,44,.5);border-radius:.35rem;padding:1.5rem;text-align:center;color:#ff2c2c;">
-              Could not load API data. Check your API key.
-            </div>
-          `;
+          <div style="grid-column:1/-1;background:rgba(0,0,0,.84);border:1px solid rgba(255,44,44,.5);border-radius:.35rem;padding:1.5rem;text-align:center;color:#ff2c2c;">
+            Could not load API data. Check your API key, endpoint, or browser console.
+          </div>
+        `;
         }
       }
 
       function createPlayerMetric(player) {
-        const name = `${player.first_name} ${player.last_name}`;
+        const name =
+          `${player.first_name || ""} ${player.last_name || ""}`.trim();
         const team = player.team ? player.team.full_name : "Unknown Team";
         const position = player.position || "N/A";
         const height = player.height || "N/A";
@@ -397,10 +416,8 @@
 
         document.getElementById("topPlayer").textContent = top.name;
         document.getElementById("topPlayerTeam").textContent = top.team;
-
         document.getElementById("bestBuy").textContent = buy.name;
         document.getElementById("bestSell").textContent = sell.name;
-
         document.getElementById("playersLoaded").textContent = metrics.length;
       }
 
@@ -410,58 +427,57 @@
         cardContainer.innerHTML = metrics
           .map(
             (player) => `
-          <article style="background:rgba(0,0,0,.84);border:1px solid rgba(255,255,255,.12);border-radius:.35rem;padding:1.5rem;box-shadow:0 0 24px rgba(0,0,0,.35);">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:1rem;">
-              <div>
-                <p style="color:#ff2c2c;font-size:.8rem;margin-bottom:.35rem;">${player.team}</p>
-                <h3 style="font-size:1.6rem;line-height:1.1;margin:0;">${player.name}</h3>
-              </div>
-
-              <span style="background:${player.actionColor};padding:.45rem .75rem;border-radius:.2rem;font-size:.8rem;">
-                ${player.action}
-              </span>
+        <article style="background:rgba(0,0,0,.84);border:1px solid rgba(255,255,255,.12);border-radius:.35rem;padding:1.5rem;box-shadow:0 0 24px rgba(0,0,0,.35);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <p style="color:#ff2c2c;font-size:.8rem;margin-bottom:.35rem;">${player.team}</p>
+              <h3 style="font-size:1.6rem;line-height:1.1;margin:0;">${player.name}</h3>
             </div>
 
-            <div style="margin-bottom:1rem;">
-              <div style="display:flex;justify-content:space-between;margin-bottom:.35rem;">
-                <span style="color:#cccccc;">Confidence</span>
-                <span>${player.confidence}%</span>
-              </div>
+            <span style="background:${player.actionColor};padding:.45rem .75rem;border-radius:.2rem;font-size:.8rem;">
+              ${player.action}
+            </span>
+          </div>
 
-              <div style="height:.65rem;background:#222;border-radius:1rem;overflow:hidden;">
-                <div style="height:100%;width:${player.confidence}%;background:#ff2c2c;"></div>
-              </div>
+          <div style="margin-bottom:1rem;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:.35rem;">
+              <span style="color:#cccccc;">Confidence</span>
+              <span>${player.confidence}%</span>
             </div>
 
-            <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;">
-              <div style="background:rgba(255,255,255,.06);padding:.75rem;border-radius:.25rem;">
-                <p style="color:#cccccc;font-size:.75rem;margin-bottom:.25rem;">Position</p>
-                <strong>${player.position}</strong>
-              </div>
-
-              <div style="background:rgba(255,255,255,.06);padding:.75rem;border-radius:.25rem;">
-                <p style="color:#cccccc;font-size:.75rem;margin-bottom:.25rem;">Trend</p>
-                <strong>${player.trend}</strong>
-              </div>
-
-              <div style="background:rgba(255,255,255,.06);padding:.75rem;border-radius:.25rem;">
-                <p style="color:#cccccc;font-size:.75rem;margin-bottom:.25rem;">Height</p>
-                <strong>${player.height}</strong>
-              </div>
-
-              <div style="background:rgba(255,255,255,.06);padding:.75rem;border-radius:.25rem;">
-                <p style="color:#cccccc;font-size:.75rem;margin-bottom:.25rem;">Weight</p>
-                <strong>${player.weight}</strong>
-              </div>
+            <div style="height:.65rem;background:#222;border-radius:1rem;overflow:hidden;">
+              <div style="height:100%;width:${player.confidence}%;background:#ff2c2c;"></div>
             </div>
-          </article>
-        `,
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;">
+            <div style="background:rgba(255,255,255,.06);padding:.75rem;border-radius:.25rem;">
+              <p style="color:#cccccc;font-size:.75rem;margin-bottom:.25rem;">Position</p>
+              <strong>${player.position}</strong>
+            </div>
+
+            <div style="background:rgba(255,255,255,.06);padding:.75rem;border-radius:.25rem;">
+              <p style="color:#cccccc;font-size:.75rem;margin-bottom:.25rem;">Trend</p>
+              <strong>${player.trend}</strong>
+            </div>
+
+            <div style="background:rgba(255,255,255,.06);padding:.75rem;border-radius:.25rem;">
+              <p style="color:#cccccc;font-size:.75rem;margin-bottom:.25rem;">Height</p>
+              <strong>${player.height}</strong>
+            </div>
+
+            <div style="background:rgba(255,255,255,.06);padding:.75rem;border-radius:.25rem;">
+              <p style="color:#cccccc;font-size:.75rem;margin-bottom:.25rem;">Weight</p>
+              <strong>${player.weight}</strong>
+            </div>
+          </div>
+        </article>
+      `,
           )
           .join("");
       }
 
       loadMetrics();
     </script>
-
   </body>
 </html>
