@@ -12,37 +12,6 @@
       rel="stylesheet"
     />
   </head>
-  <header>
-    <div class="logo-container">
-      <a href="home.html">
-        <img src="./images/NXP.png" alt="NextPLay Logo" />
-      </a>
-    </div>
-    <div class="hamburger" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
-    <div class="nav-wrapper" id="navWrapper">
-      <nav class="nav-group left">
-        <ul>
-          <li><a href="dashboard.html">Dashboard</a></li>
-          <li><a href="player_insights.html">Player Insights</a></li>
-          <li><a href="matchup.html">Matchups</a></li>
-          <li><a href="trends.html">Trends</a></li>
-        </ul>
-      </nav>
-      <nav class="nav-group right">
-        <ul>
-          <li><a href="metrics.html">Quick Metrics</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="account.html">My Account</a></li>
-          <li><a href="help.html">Help</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
   <body
     style="
       margin: 0;
@@ -88,7 +57,7 @@
         "
       >
         <img
-          src="logo.png"
+          src="./images/NXP.png"
           alt="NextPlay Logo"
           style="width: clamp(6rem, 15vw, 12rem); height: auto; display: block"
         />
@@ -488,5 +457,120 @@
 
       loadMetrics();
     </script>
+    <footer
+      style="
+        position: relative;
+        z-index: 1;
+        margin-top: 4vh;
+        padding: 2vh 3vw;
+        background: rgba(0, 0, 0, 0.85);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      "
+    >
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 2rem;
+          max-width: 1200px;
+          margin: 0 auto;
+        "
+      >
+        <!-- LEFT LINKS -->
+        <div>
+          <p style="color: #ff2c2c; font-size: 0.8rem; margin-bottom: 0.75rem">
+            Platform
+          </p>
+          <ul
+            style="
+              list-style: none;
+              padding: 0;
+              margin: 0;
+              display: flex;
+              flex-direction: column;
+              gap: 0.5rem;
+            "
+          >
+            <li>
+              <a
+                href="dashboard.html"
+                style="color: white; text-decoration: none"
+                >Dashboard</a
+              >
+            </li>
+            <li>
+              <a
+                href="player_insights.html"
+                style="color: white; text-decoration: none"
+                >Player Insights</a
+              >
+            </li>
+            <li>
+              <a href="matchup.html" style="color: white; text-decoration: none"
+                >Matchups</a
+              >
+            </li>
+            <li>
+              <a href="trends.html" style="color: white; text-decoration: none"
+                >Trends</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- RIGHT LINKS -->
+        <div>
+          <p style="color: #ff2c2c; font-size: 0.8rem; margin-bottom: 0.75rem">
+            Tools
+          </p>
+          <ul
+            style="
+              list-style: none;
+              padding: 0;
+              margin: 0;
+              display: flex;
+              flex-direction: column;
+              gap: 0.5rem;
+            "
+          >
+            <li>
+              <a
+                href="metrics.html"
+                style="color: #ff2c2c; text-decoration: none"
+                >Quick Metrics</a
+              >
+            </li>
+            <li>
+              <a href="news.html" style="color: white; text-decoration: none"
+                >News</a
+              >
+            </li>
+            <li>
+              <a href="account.html" style="color: white; text-decoration: none"
+                >My Account</a
+              >
+            </li>
+            <li>
+              <a href="help.html" style="color: white; text-decoration: none"
+                >Help</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- LOGO + HOME LINK -->
+        <div style="text-align: center">
+          <a href="index.html">
+            <img
+              src="./images/NXP.png"
+              alt="NextPlay Logo"
+              style="width: clamp(5rem, 10vw, 8rem); margin-bottom: 0.5rem"
+            />
+          </a>
+          <p style="font-size: 0.75rem; color: #777">© NextPlay</p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
