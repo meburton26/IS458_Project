@@ -3,13 +3,459 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trends</title>
+    <title>NextPlay | Quick-Action Metrics</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap"
       rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
     />
   </head>
-  <body></body>
+
+  <body
+    style="
+      margin: 0;
+      position: relative;
+      background: url(&quot;https://images.unsplash.com/photo-1546519638-68e109498ffc&quot;)
+        no-repeat center/cover;
+      font-family: &quot;Oswald&quot;, sans-serif;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+    "
+  >
+    <div
+      style="
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.72);
+        z-index: 0;
+      "
+    ></div>
+    <link rel="stylesheet" href="home.css" />
+    <header>
+      <div class="logo-container">
+        <a href="home.html">
+          <img src="./images/NXP.png" alt="NextPLay Logo" />
+        </a>
+      </div>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="nav-wrapper" id="navWrapper">
+        <nav class="nav-group left">
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="player_insights.html">Player Insights</a></li>
+            <li><a href="matchup.html">Matchups</a></li>
+            <li><a href="trends.html">Trends</a></li>
+          </ul>
+        </nav>
+        <nav class="nav-group right">
+          <ul>
+            <li><a href="metrics.html">Quick Metrics</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="account.html">My Account</a></li>
+            <li><a href="help.html">Help</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main style="position: relative; z-index: 1; padding: 10vh 3vw 5vh">
+      <section style="text-align: center; margin-bottom: 3vh">
+        <p style="color: #ff2c2c; letter-spacing: 0.15em; margin-bottom: 1vh">
+          Live Player Data
+        </p>
+
+        <h1
+          style="
+            font-size: clamp(2.8rem, 8vw, 5.5rem);
+            line-height: 0.9;
+            margin: 0 0 1.5vh;
+          "
+        >
+          Quick-Action
+          <span
+            style="
+              display: block;
+              -webkit-text-stroke: 0.08rem white;
+              color: transparent;
+            "
+          >
+            Metrics
+          </span>
+        </h1>
+
+        <p
+          style="
+            max-width: 48rem;
+            margin: 0 auto;
+            color: #cccccc;
+            font-size: 1.05rem;
+            line-height: 1.5;
+          "
+        >
+          Buy/sell indicators and lineup recommendations based on live player
+          data.
+        </p>
+      </section>
+
+      <!-- SUMMARY CARDS -->
+      <section
+        style="
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1rem;
+          margin-bottom: 2vh;
+        "
+      >
+        <div
+          style="
+            background: rgba(0, 0, 0, 0.82);
+            border: 1px solid rgba(255, 44, 44, 0.5);
+            border-radius: 0.35rem;
+            padding: 1.5rem;
+          "
+        >
+          <p style="color: #ff2c2c; font-size: 0.85rem; margin-bottom: 0.75rem">
+            Top Player
+          </p>
+          <h2 id="topPlayer" style="font-size: 2rem; margin: 0 0 0.5rem">--</h2>
+          <p id="topPlayerTeam" style="color: #cccccc">--</p>
+        </div>
+
+        <div
+          style="
+            background: rgba(0, 0, 0, 0.82);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 0.35rem;
+            padding: 1.5rem;
+          "
+        >
+          <p style="color: #ff2c2c; font-size: 0.85rem; margin-bottom: 0.75rem">
+            Best Buy
+          </p>
+          <h2 id="bestBuy" style="font-size: 2rem; margin: 0 0 0.5rem">--</h2>
+          <p style="color: #cccccc">Strong upside signal</p>
+        </div>
+
+        <div
+          style="
+            background: rgba(0, 0, 0, 0.82);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 0.35rem;
+            padding: 1.5rem;
+          "
+        >
+          <p style="color: #ff2c2c; font-size: 0.85rem; margin-bottom: 0.75rem">
+            Best Sell
+          </p>
+          <h2 id="bestSell" style="font-size: 2rem; margin: 0 0 0.5rem">--</h2>
+          <p style="color: #cccccc">Lower confidence signal</p>
+        </div>
+
+        <div
+          style="
+            background: rgba(0, 0, 0, 0.82);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 0.35rem;
+            padding: 1.5rem;
+          "
+        >
+          <p style="color: #ff2c2c; font-size: 0.85rem; margin-bottom: 0.75rem">
+            Players Loaded
+          </p>
+          <h2 id="playersLoaded" style="font-size: 2rem; margin: 0 0 0.5rem">
+            --
+          </h2>
+          <p style="color: #cccccc">From BALLDONTLIE</p>
+        </div>
+      </section>
+
+      <!-- FILTERS -->
+      <section
+        style="
+          background: rgba(0, 0, 0, 0.84);
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          border-radius: 0.35rem;
+          padding: 1.25rem;
+          margin-bottom: 2vh;
+          display: grid;
+          grid-template-columns: 1fr 1fr auto;
+          gap: 1rem;
+          align-items: end;
+        "
+      >
+        <div>
+          <label
+            style="
+              display: block;
+              color: #cccccc;
+              font-size: 0.8rem;
+              margin-bottom: 0.5rem;
+            "
+          >
+            Search Player
+          </label>
+          <input
+            id="playerSearch"
+            placeholder="Example: Curry"
+            style="
+              width: 100%;
+              padding: 0.9rem;
+              background: #050505;
+              border: 1px solid rgba(255, 255, 255, 0.2);
+              color: white;
+              border-radius: 0.2rem;
+              font-family: &quot;Oswald&quot;, sans-serif;
+              text-transform: uppercase;
+            "
+          />
+        </div>
+
+        <div>
+          <label
+            style="
+              display: block;
+              color: #cccccc;
+              font-size: 0.8rem;
+              margin-bottom: 0.5rem;
+            "
+          >
+            Results
+          </label>
+          <select
+            id="resultCount"
+            style="
+              width: 100%;
+              padding: 0.9rem;
+              background: #050505;
+              border: 1px solid rgba(255, 255, 255, 0.2);
+              color: white;
+              border-radius: 0.2rem;
+              font-family: &quot;Oswald&quot;, sans-serif;
+              text-transform: uppercase;
+            "
+          >
+            <option value="5">5 Players</option>
+            <option value="10" selected>10 Players</option>
+            <option value="15">15 Players</option>
+          </select>
+        </div>
+
+        <button
+          onclick="loadMetrics()"
+          style="
+            padding: 1rem 2rem;
+            background: #ff2c2c;
+            color: white;
+            border: none;
+            border-radius: 0.2rem;
+            font-family: &quot;Oswald&quot;, sans-serif;
+            text-transform: uppercase;
+            font-weight: bold;
+            cursor: pointer;
+          "
+        >
+          Load Metrics
+        </button>
+      </section>
+
+      <!-- PLAYER CARDS -->
+      <section
+        id="cardContainer"
+        style="
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+          gap: 1rem;
+        "
+      ></section>
+    </main>
+
+    <!-- JAVASCRIPT -->
+    <script>
+      const API_KEY = "69e71f06-000f-432f-bfe7-db82d4ac391c";
+
+      const API_URL = "https://api.balldontlie.io/nba/v1/players";
+
+      async function loadMetrics() {
+        const searchValue = document
+          .getElementById("playerSearch")
+          .value.trim();
+        const resultCount = document.getElementById("resultCount").value;
+        const cardContainer = document.getElementById("cardContainer");
+
+        cardContainer.innerHTML = `
+        <div style="grid-column:1/-1;background:rgba(0,0,0,.84);border:1px solid rgba(255,255,255,.12);border-radius:.35rem;padding:1.5rem;text-align:center;">
+          Loading player metrics...
+        </div>
+      `;
+
+        try {
+          let url = `${API_URL}?per_page=${resultCount}`;
+
+          if (searchValue) {
+            url += `&search=${encodeURIComponent(searchValue)}`;
+          }
+
+          const response = await fetch(url, {
+            method: "GET",
+            headers: {
+              Authorization: API_KEY,
+              Accept: "application/json",
+            },
+          });
+
+          if (!response.ok) {
+            throw new Error(`API request failed: ${response.status}`);
+          }
+
+          const data = await response.json();
+          const players = data.data || [];
+
+          if (players.length === 0) {
+            cardContainer.innerHTML = `
+            <div style="grid-column:1/-1;background:rgba(0,0,0,.84);border:1px solid rgba(255,44,44,.5);border-radius:.35rem;padding:1.5rem;text-align:center;">
+              No players found.
+            </div>
+          `;
+            return;
+          }
+
+          const metrics = players.map(createPlayerMetric);
+
+          updateSummaryCards(metrics);
+          renderMetricCards(metrics);
+        } catch (error) {
+          console.error(error);
+
+          cardContainer.innerHTML = `
+          <div style="grid-column:1/-1;background:rgba(0,0,0,.84);border:1px solid rgba(255,44,44,.5);border-radius:.35rem;padding:1.5rem;text-align:center;color:#ff2c2c;">
+            Could not load API data. Check your API key, endpoint, or browser console.
+          </div>
+        `;
+        }
+      }
+
+      function createPlayerMetric(player) {
+        const name =
+          `${player.first_name || ""} ${player.last_name || ""}`.trim();
+        const team = player.team ? player.team.full_name : "Unknown Team";
+        const position = player.position || "N/A";
+        const height = player.height || "N/A";
+        const weight = player.weight || "N/A";
+
+        const scoreSeed = name.length + team.length + position.length * 7;
+        const confidence = 60 + (scoreSeed % 36);
+
+        let action = "Hold";
+        let actionColor = "#555";
+        let trend = "Stable";
+
+        if (confidence >= 85) {
+          action = "Buy";
+          actionColor = "#1f7a3f";
+          trend = "Up";
+        } else if (confidence <= 70) {
+          action = "Sell";
+          actionColor = "#8f1d1d";
+          trend = "Down";
+        }
+
+        return {
+          name,
+          team,
+          position,
+          height,
+          weight,
+          confidence,
+          action,
+          actionColor,
+          trend,
+        };
+      }
+
+      function updateSummaryCards(metrics) {
+        const sorted = [...metrics].sort((a, b) => b.confidence - a.confidence);
+
+        const top = sorted[0];
+        const buy = sorted.find((player) => player.action === "Buy") || top;
+        const sell = [...metrics].sort(
+          (a, b) => a.confidence - b.confidence,
+        )[0];
+
+        document.getElementById("topPlayer").textContent = top.name;
+        document.getElementById("topPlayerTeam").textContent = top.team;
+        document.getElementById("bestBuy").textContent = buy.name;
+        document.getElementById("bestSell").textContent = sell.name;
+        document.getElementById("playersLoaded").textContent = metrics.length;
+      }
+
+      function renderMetricCards(metrics) {
+        const cardContainer = document.getElementById("cardContainer");
+
+        cardContainer.innerHTML = metrics
+          .map(
+            (player) => `
+        <article style="background:rgba(0,0,0,.84);border:1px solid rgba(255,255,255,.12);border-radius:.35rem;padding:1.5rem;box-shadow:0 0 24px rgba(0,0,0,.35);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <p style="color:#ff2c2c;font-size:.8rem;margin-bottom:.35rem;">${player.team}</p>
+              <h3 style="font-size:1.6rem;line-height:1.1;margin:0;">${player.name}</h3>
+            </div>
+
+            <span style="background:${player.actionColor};padding:.45rem .75rem;border-radius:.2rem;font-size:.8rem;">
+              ${player.action}
+            </span>
+          </div>
+
+          <div style="margin-bottom:1rem;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:.35rem;">
+              <span style="color:#cccccc;">Confidence</span>
+              <span>${player.confidence}%</span>
+            </div>
+
+            <div style="height:.65rem;background:#222;border-radius:1rem;overflow:hidden;">
+              <div style="height:100%;width:${player.confidence}%;background:#ff2c2c;"></div>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;">
+            <div style="background:rgba(255,255,255,.06);padding:.75rem;border-radius:.25rem;">
+              <p style="color:#cccccc;font-size:.75rem;margin-bottom:.25rem;">Position</p>
+              <strong>${player.position}</strong>
+            </div>
+
+            <div style="background:rgba(255,255,255,.06);padding:.75rem;border-radius:.25rem;">
+              <p style="color:#cccccc;font-size:.75rem;margin-bottom:.25rem;">Trend</p>
+              <strong>${player.trend}</strong>
+            </div>
+
+            <div style="background:rgba(255,255,255,.06);padding:.75rem;border-radius:.25rem;">
+              <p style="color:#cccccc;font-size:.75rem;margin-bottom:.25rem;">Height</p>
+              <strong>${player.height}</strong>
+            </div>
+
+            <div style="background:rgba(255,255,255,.06);padding:.75rem;border-radius:.25rem;">
+              <p style="color:#cccccc;font-size:.75rem;margin-bottom:.25rem;">Weight</p>
+              <strong>${player.weight}</strong>
+            </div>
+          </div>
+        </article>
+      `,
+          )
+          .join("");
+      }
+
+      window.onload = loadMetrics;
+    </script>
+  </body>
 </html>
