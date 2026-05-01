@@ -3,7 +3,64 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Matchups | NextPLay (NXP)</title>
+    <link rel="stylesheet" href="matchup.css" />
   </head>
-  <body></body>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("navWrapper");
+      nav.classList.toggle("active");
+    }
+  </script>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="logo-container">
+        <a href="home.html">
+          <img src="./images/NXP.png" alt="NextPlay Logo" />
+        </a>
+      </div>
+
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="nav-wrapper" id="navWrapper">
+        <nav class="nav-group left">
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="player_insights.html">Player Insights</a></li>
+            <li><a href="matchup.html">Matchups</a></li>
+            <li><a href="trends.html">Trends</a></li>
+          </ul>
+        </nav>
+
+        <nav class="nav-group right">
+          <ul>
+            <li><a href="metrics.html">Quick Metrics</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="account.html">My Account</a></li>
+            <li><a href="help.html">Help</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Under Contruction Content -->
+    <section class="construction-container">
+      <div class="construction-box">
+        <h1>MATCHUPS</h1>
+        <h2><span>UNDER CONSTRUCTION</span></h2>
+        <p>This feature is currently being built. Check back soon.</p>
+      </div>
+    </section>
+
+    <foot>
+      <p>&copy; 2026 NextPlay (NXP) | Sports Analytics Dashboard</p>
+    </foot>
+  </body>
 </html>
