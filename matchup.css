@@ -1,0 +1,170 @@
+:root {
+  --primary: #ff2c2c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url("https://images.unsplash.com/photo-1546519638-68e109498ffc")
+    no-repeat center/cover fixed;
+  font-family: "Oswald", sans-serif;
+  color: white;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* OVERLAY */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 0;
+}
+
+/* HEADER */
+header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2vh 3vw;
+  height: 12vh;
+  z-index: 10;
+}
+
+/* LOGO */
+.logo-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.logo-container img {
+  width: clamp(6rem, 15vw, 12rem);
+}
+
+/* NAV */
+.nav-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.nav-group ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.nav-group a {
+  color: white;
+  text-decoration: none;
+}
+
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 0.4rem;
+  position: absolute;
+  left: 3vw;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 2rem;
+  height: 0.15rem;
+  background: white;
+}
+
+/* CONSTRUCTION */
+.construction-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 1;
+  padding: 5vh 5vw;
+}
+
+.construction-box {
+  background: rgba(0, 0, 0, 0.85);
+  padding: 3rem;
+  max-width: 35rem;
+  border: 0.05rem solid #222;
+}
+
+.construction-box h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.construction-box h2 {
+  margin: 1rem 0;
+}
+
+.construction-box span {
+  color: var(--primary);
+}
+
+.construction-box p {
+  color: #ccc;
+  margin-bottom: 2rem;
+}
+
+/* BUTTON */
+.btn {
+  padding: 0.8rem 2rem;
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: white;
+  color: black;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 2vh;
+  font-size: 0.75rem;
+  color: #777;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* MOBILE */
+@media (max-width: 64rem) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-wrapper {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    text-align: center;
+  }
+
+  .nav-wrapper.active {
+    display: flex;
+  }
+
+  .nav-group ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
