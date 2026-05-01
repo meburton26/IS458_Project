@@ -35,63 +35,41 @@
         z-index: 0;
       "
     ></div>
-
-    <!-- HEADER -->
-    <header
-      style="
-        position: relative;
-        z-index: 2;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 2vh 3vw;
-        height: 12vh;
-      "
-    >
-      <div style="font-size: 0.9rem; letter-spacing: 0.08em">Metrics</div>
-
-      <div
-        style="
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-        "
-      >
+    <link rel="stylesheet" href="home.css" />
+    <header>
+      <div class="logo-container">
         <a href="home.html">
-          <img
-            src="./images/NXP.png"
-            alt="NextPlay Logo"
-            style="
-              width: clamp(6rem, 15vw, 12rem);
-              height: auto;
-              display: block;
-              cursor: pointer;
-            "
-          />
+          <img src="./images/NXP.png" alt="NextPLay Logo" />
         </a>
       </div>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
 
-      <button
-        onclick="loadMetrics()"
-        style="
-          padding: 1rem 2rem;
-          background: #ff2c2c;
-          color: white;
-          border: none;
-          border-radius: 0.2rem;
-          font-family: &quot;Oswald&quot;, sans-serif;
-          text-transform: uppercase;
-          font-weight: bold;
-          cursor: pointer;
-        "
-      >
-        Refresh
-      </button>
+      <div class="nav-wrapper" id="navWrapper">
+        <nav class="nav-group left">
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="player_insights.html">Player Insights</a></li>
+            <li><a href="matchup.html">Matchups</a></li>
+            <li><a href="trends.html">Trends</a></li>
+          </ul>
+        </nav>
+        <nav class="nav-group right">
+          <ul>
+            <li><a href="metrics.html">Quick Metrics</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="account.html">My Account</a></li>
+            <li><a href="help.html">Help</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <!-- MAIN CONTENT -->
-    <main style="position: relative; z-index: 1; padding: 3vh 3vw 5vh">
+    <main style="position: relative; z-index: 1; padding: 10vh 3vw 5vh">
       <section style="text-align: center; margin-bottom: 3vh">
         <p style="color: #ff2c2c; letter-spacing: 0.15em; margin-bottom: 1vh">
           Live Player Data
