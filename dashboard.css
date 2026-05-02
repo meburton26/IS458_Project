@@ -3,19 +3,19 @@
   --bg: #050505;
 }
 
-html {
-  font-size: 100%;
-}
-
-/* reset default spacing */
+/* Reset default spacing */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* main page background */
+html {
+  font-size: 100%;
+}
+
 body {
+  /* Use your sports stadium image */
   background: url("https://images.unsplash.com/photo-1504450758481-7338eba7524a")
     no-repeat center/cover fixed;
   font-family: "Oswald", sans-serif;
@@ -27,16 +27,16 @@ body {
   flex-direction: column;
 }
 
-/* overlay to improve readability */
+/* Overlay - z-index set to -1 to ensure buttons remain clickable */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  z-index: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: -1;
 }
 
-/* header layout */
+/* Header Layout */
 header {
   position: relative;
   display: flex;
@@ -47,7 +47,6 @@ header {
   z-index: 10;
 }
 
-/* center logo */
 .logo-container {
   position: absolute;
   left: 50%;
@@ -55,28 +54,24 @@ header {
   transform: translate(-50%, -50%);
 }
 
-/* logo size */
 .logo-container img {
   width: clamp(6rem, 15vw, 12rem);
   height: auto;
   cursor: pointer;
 }
 
-/* navigation wrapper */
 .nav-wrapper {
   display: flex;
   width: 100%;
   justify-content: space-between;
 }
 
-/* nav list */
 .nav-group ul {
   display: flex;
   gap: 1.5rem;
   list-style: none;
 }
 
-/* nav links */
 .nav-group a {
   text-decoration: none;
   color: white;
@@ -85,7 +80,6 @@ header {
   transition: 0.3s;
 }
 
-/* underline hover effect */
 .nav-group a::after {
   content: "";
   position: absolute;
@@ -101,27 +95,22 @@ header {
   width: 100%;
 }
 
-/* hamburger menu (hidden on desktop) */
+/* Hamburger Menu */
 .hamburger {
   display: none;
   flex-direction: column;
   gap: 0.4rem;
   cursor: pointer;
-  position: absolute;
-  left: 3vw;
-  top: 50%;
-  transform: translateY(-50%);
   z-index: 9999;
 }
 
-/* hamburger lines */
 .hamburger span {
   width: 2.2rem;
   height: 0.15rem;
   background: white;
 }
 
-/* dashboard container with spacing below header */
+/* Main Container - z-index ensures it sits above the background overlay */
 .dashboard-container {
   position: relative;
   z-index: 1;
@@ -129,9 +118,9 @@ header {
   max-width: 75rem;
   margin: 0 auto;
   flex: 1;
+  width: 100%;
 }
 
-/* page title */
 .dashboard-title {
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   margin-bottom: 3rem;
@@ -139,7 +128,7 @@ header {
   letter-spacing: 0.1rem;
 }
 
-/* grid layout for stat cards */
+/* Grid Layout */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
@@ -147,102 +136,103 @@ header {
   margin-bottom: 3rem;
 }
 
-/* stat cards */
 .card {
-  background: rgba(0, 0, 0, 0.75);
-  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 2rem 1.5rem;
   border-radius: 0.5rem;
-  border: 0.05rem solid #222;
+  border: 1px solid #333;
   text-align: center;
   transition: 0.3s;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
 }
 
-/* hover effect */
 .card:hover {
   transform: translateY(-0.4rem);
-  box-shadow: 0 0 1.5rem rgba(255, 44, 44, 0.4);
+  box-shadow: 0 0 20px rgba(255, 44, 44, 0.4);
+  border-color: var(--primary);
 }
 
-/* card heading */
 .card h3 {
   margin-bottom: 0.8rem;
   font-size: 1rem;
+  color: #ccc;
 }
 
-/* card value */
 .card p {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: var(--primary);
 }
 
-/* recent activity section */
+/* Recent Activity - centered and formatted for readability */
 .activity-section {
-  margin-bottom: 3rem;
-  max-width: 30rem;
+  margin: 0 auto 3rem auto;
+  max-width: 35rem;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid #222;
+  text-align: center;
 }
 
-/* activity title */
 .activity-section h2 {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+  border-bottom: 2px solid var(--primary);
+  display: inline-block;
+  padding-bottom: 5px;
 }
 
-/* activity list */
 .activity-section ul {
   list-style: none;
+  text-align: left;
+  display: inline-block;
 }
 
-/* activity items */
 .activity-section li {
-  margin: 0.5rem 0;
-  color: #ddd;
-  font-size: 0.9rem;
+  margin: 0.8rem 0;
+  color: #eee;
+  font-size: 1rem;
 }
 
-/* action buttons container */
+/* Action Buttons */
 .actions {
   text-align: center;
   margin-top: 2rem;
+  margin-bottom: 4rem;
 }
 
-/* buttons */
 .btn {
   display: inline-block;
   margin: 0.5rem;
-  padding: 0.8rem 1.6rem;
+  padding: 1rem 2rem;
   background: var(--primary);
   color: white;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 1rem;
   border-radius: 0.3rem;
   transition: 0.25s;
   cursor: pointer;
+  border: none;
 }
 
-/* hover effect */
 .btn:hover {
   background: white;
   color: black;
-  transform: scale(1.05);
+  transform: translateY(-2px);
 }
 
-/* click effect */
-.btn:active {
-  transform: scale(0.97);
-}
-
-/* footer */
+/* Footer */
 footer {
   text-align: center;
-  padding: 2vh;
-  font-size: 0.75rem;
-  color: #bbb;
-  background: rgba(0, 0, 0, 0.7);
+  padding: 3vh;
+  font-size: 0.8rem;
+  color: #999;
+  background: rgba(0, 0, 0, 0.9);
   position: relative;
   z-index: 1;
 }
 
-/* responsive layout */
+/* Responsive Layout */
 @media (max-width: 64rem) {
   .hamburger {
     display: flex;
@@ -255,10 +245,9 @@ footer {
     top: 100%;
     left: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.95);
     padding: 3vh 0;
     text-align: center;
-    z-index: 5000;
   }
 
   .nav-wrapper.active {
@@ -268,10 +257,6 @@ footer {
   .nav-group ul {
     flex-direction: column;
     gap: 2vh;
-  }
-
-  /* remove hover underline on mobile */
-  .nav-group a::after {
-    display: none;
+    padding: 1rem 0;
   }
 }
