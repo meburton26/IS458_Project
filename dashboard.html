@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="dashboard.css" />
   </head>
   <script>
-     function toggleMenu() {
-        const nav = document.getElementById("navWrapper");
-        nav.classList.toggle("active");
-      }
+    function toggleMenu() {
+      const nav = document.getElementById("navWrapper");
+      nav.classList.toggle("active");
+    }
   </script>
   <body>
     <header>
@@ -43,6 +43,34 @@
         </nav>
       </div>
     </header>
-    </header>
+
+    <!--Dashboard Content-->
+    <section>
+      <h1 class="dashboard-title">Dashboard</h1>
+      <!--Stat Cards-->
+      <div class="stats-grid">
+        <div class="card">
+          <h3>Win Rate</h3>
+          <p>68%</p>
+        </div>
+
+        <div class="card">
+          <h3>Top Player</h3>
+          <p>LeBron James</p>
+        </div>
+
+        <div class="card">
+          <h3>Hot Streak</h3>
+          <p>5 Games</p>
+        </div>
+
+        <div class="card">
+          <h3>Prediction Accuracy</h3>
+          <p>92%</p>
+        </div>
+      </div>
+
+      <!--Recent activity-->
+    </section>
   </body>
 </html>
