@@ -1,0 +1,262 @@
+:root {
+  --primary: #ff2c2c;
+  --bg: #050505;
+}
+
+html {
+  font-size: 100%;
+}
+
+/* reset default spacing and box model */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* main page styling with background image */
+body {
+  background: url("https://images.unsplash.com/photo-1546519638-68e109498ffc")
+    no-repeat center/cover fixed;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* dark overlay to improve text readability */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+/* header layout and positioning */
+header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2vh 3vw;
+  height: 12vh;
+  z-index: 10;
+}
+
+/* center logo inside header */
+.logo-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* logo sizing */
+.logo-container img {
+  width: clamp(6rem, 15vw, 12rem);
+  height: auto;
+  cursor: pointer;
+}
+
+/* navigation container */
+.nav-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+/* navigation list layout */
+.nav-group ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+/* navigation links */
+.nav-group a {
+  text-decoration: none;
+  color: white;
+  font-size: 0.9rem;
+  position: relative;
+}
+
+/* underline animation on hover */
+.nav-group a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.25rem;
+  width: 0%;
+  height: 0.125rem;
+  background: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.nav-group a:hover::after {
+  width: 100%;
+}
+
+/* hamburger menu (hidden on desktop) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 0.4rem;
+  cursor: pointer;
+  position: absolute;
+  left: 3vw;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+}
+
+/* hamburger lines */
+.hamburger span {
+  width: 2.2rem;
+  height: 0.15rem;
+  background: white;
+}
+
+/* main dashboard container */
+.dashboard-container {
+  position: relative;
+  z-index: 1;
+  padding: 12vh 5vw 5vh;
+  max-width: 75rem;
+  margin: 0 auto;
+  flex: 1;
+}
+
+/* dashboard title styling */
+.dashboard-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+/* responsive grid for stat cards */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+/* individual stat card */
+.card {
+  background: rgba(0, 0, 0, 0.9);
+  padding: 1.5rem;
+  border: 0.05rem solid #222;
+  text-align: center;
+  transition: 0.3s;
+}
+
+/* hover effect for cards */
+.card:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0 0 1rem rgba(255, 44, 44, 0.3);
+}
+
+/* card title */
+.card h3 {
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+}
+
+/* card value */
+.card p {
+  font-size: 1.4rem;
+  color: var(--primary);
+}
+
+/* recent activity section */
+.activity-section {
+  margin-bottom: 2.5rem;
+}
+
+.activity-section h2 {
+  margin-bottom: 1rem;
+}
+
+.activity-section ul {
+  list-style: none;
+}
+
+/* activity list items */
+.activity-section li {
+  margin: 0.4rem 0;
+  color: #ccc;
+  font-size: 0.85rem;
+}
+
+/* container for action buttons */
+.actions {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+/* primary buttons */
+.btn {
+  display: inline-block;
+  margin: 0.5rem;
+  padding: 0.7rem 1.3rem;
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: 0.3s;
+}
+
+/* button hover effect */
+.btn:hover {
+  background: white;
+  color: black;
+}
+
+/* footer styling */
+footer {
+  text-align: center;
+  padding: 2vh;
+  font-size: 0.75rem;
+  color: #777;
+  background: rgba(0, 0, 0, 0.8);
+  position: relative;
+  z-index: 1;
+}
+
+/* mobile layout adjustments */
+@media (max-width: 64rem) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-wrapper {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    padding: 3vh 0;
+    text-align: center;
+    z-index: 5000;
+  }
+
+  .nav-wrapper.active {
+    display: flex;
+  }
+
+  .nav-group ul {
+    flex-direction: column;
+    gap: 2vh;
+  }
+
+  /* remove underline animation on mobile */
+  .nav-group a::after {
+    display: none;
+  }
+}
