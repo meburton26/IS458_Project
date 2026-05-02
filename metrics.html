@@ -346,6 +346,22 @@
       }
 
       function createPlayerMetric(player) {
+        function calculateConfidence(stats) {
+          const pointsScore = Math.min(stats.pts / 30, 1) * 100;
+          const reboundsScore = Math.min(stats.reb / 12, 1) * 100;
+          const assistsScore = Math.min(stats.ast / 10, 1) * 100;
+          const minutesScore = Math.min(stats.min / 35, 1) * 100;
+          const gamesPlayedScore = Math.min(stats.games_played / 82, 1) * 100;
+
+          const confidence =
+            pointsScore * 0.3 +
+            reboundsScore * 0.15 +
+            assistsScore * 0.15 +
+            minutesScore * 0.25 +
+            gamesPlayedScore * 0.15;
+
+          return Math.round(confidence);
+        }
         const name =
           `${player.first_name || ""} ${player.last_name || ""}`.trim();
         const team = player.team ? player.team.full_name : "Unknown Team";
@@ -353,12 +369,29 @@
         const height = player.height || "N/A";
         const weight = player.weight || "N/A";
 
-        const scoreSeed = name.length + team.length + position.length * 7;
-        const confidence = 60 + (scoreSeed % 36);
+        const tempStats = {
+          pts: Math.floor(Math.random() * 30),
+          reb: Math.floor(Math.random() * 12),
+          ast: Math.floor(Math.random() * 10),
+          min: Math.floor(Math.random() * 35),
+          games_played: Math.floor(Math.random() * 82),
+        };
+
+        const confidence = calculateConfidence(tempStats);
 
         let action = "Hold";
         let actionColor = "#555";
         let trend = "Stable";
+
+        if (confidence >= 80) {
+          action = "Buy";
+          actionColor = "#1f7a3f";
+          trend = "Up";
+        } else if (confidence <= 60) {
+          action = "Sell";
+          actionColor = "#8f1d1d";
+          trend = "Down";
+        }
 
         if (confidence >= 85) {
           action = "Buy";
